@@ -24,7 +24,9 @@ public class OtpService {
 	
 	
 	public void sendOtp(String phoneNumber, String otp){
-		kafkaTemplate.send("otp_topic", phoneNumber, otp);
+		
+		String message = phoneNumber + ":" + otp ;
+		kafkaTemplate.send("otp_topic", message);
 	}
 
 }
